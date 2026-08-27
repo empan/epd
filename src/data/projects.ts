@@ -9,7 +9,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Checkout, rebuilt",
+    title: "Design team programs",
     blurb: "Two years, one replatform, four decisions that mattered.",
     meta: "LEDGERLINE · 2024–26",
     slot: "HERO SHOT",

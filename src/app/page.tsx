@@ -1,4 +1,3 @@
-import HeaderGlow from "@/components/HeaderGlow";
 import { about, marqueeItems, nav, pills, site } from "@/data/site";
 import { projects } from "@/data/projects";
 
@@ -18,7 +17,7 @@ export default function Home() {
           color: "var(--color-ink)",
         }}
       >
-        <HeaderGlow>
+        <div>
           {/* Header bar */}
           <div
             style={{
@@ -77,6 +76,7 @@ export default function Home() {
               {pills.map((pill) => (
                 <span
                   key={pill.label}
+                  className="desk-pill"
                   style={{
                     background: pill.bg,
                     color: pill.fg,
@@ -87,12 +87,12 @@ export default function Home() {
                     transform: `rotate(${pill.rotate}deg)`,
                   }}
                 >
-                  {pill.label}
+                  <span style={{ position: "relative", zIndex: 1 }}>{pill.label}</span>
                 </span>
               ))}
             </div>
           </div>
-        </HeaderGlow>
+        </div>
 
         {/* Marquee */}
         <div style={{ padding: "14px 0", background: "var(--color-yellow)", overflow: "hidden" }}>
