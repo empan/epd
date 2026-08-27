@@ -2,7 +2,7 @@ export const site = {
   name: "Emily Pan",
   role: "Design Manager",
   headerLabel: "",
-  tagline: "Hi, I'm Emily! I lead product design teams.",
+  tagline: "Hi, I'm Emily! I lead product design teams through ambiguity.",
   description:
     "Emily Pan",
   url: "https://empan.github.io/epd",
@@ -17,35 +17,6 @@ export const nav = [
   { href: "#contact", label: "say hi" },
 ];
 
-// Rotated chips under the hero headline. `borderA`/`borderB` are the two
-// stops of the animated gradient rim on hover, tuned to each pill's own bg.
-export const pills = [
-  {
-    label: "Making complex things simple @ Datadog",
-    bg: "#ffd76b",
-    fg: "#23301c",
-    borderA: "#e0a72c",
-    borderB: "#fff0c2",
-    rotate: -2,
-  },
-  {
-    label: "Small & large teams",
-    bg: "#f4fbf8",
-    fg: "#1f2b26",
-    borderA: "#1f6f5c",
-    borderB: "#bfe3da",
-    rotate: 1.5,
-  },
-  {
-    label: "\"Upstate\" New York",
-    bg: "#ff8f6b",
-    fg: "#2b1a14",
-    borderA: "#e0603c",
-    borderB: "#ffcbb6",
-    rotate: -1,
-  },
-];
-
 export const marqueeItems = [
   "upleveling",
   "mentoring",
@@ -55,6 +26,6 @@ export const marqueeItems = [
 ];
 
 export const about = {
-  heading: "Also true about me",
-  body: "I keep a spreadsheet of every critique I've run. I make bad ceramics on Sundays. I will read your PRD twice and then ask about the empty state.",
+  heading: "About me",
+  body: "I'm based in the Hudson Valley, NY. I'm a big fan of ceramics, baking, and nature walks.",
 };

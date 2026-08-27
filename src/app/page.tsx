@@ -1,4 +1,4 @@
-import { about, marqueeItems, nav, pills, site } from "@/data/site";
+import { about, marqueeItems, nav, site } from "@/data/site";
 import { projects } from "@/data/projects";
 
 const mono = "var(--font-plex-mono), monospace";
@@ -64,35 +64,6 @@ export default function Home() {
             >
               {site.tagline}
             </h1>
-            <div
-              style={{
-                marginTop: 22,
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                flexWrap: "wrap",
-              }}
-            >
-              {pills.map((pill) => (
-                <span
-                  key={pill.label}
-                  className="desk-pill"
-                  style={{
-                    background: pill.bg,
-                    color: pill.fg,
-                    fontSize: 14,
-                    fontWeight: 600,
-                    padding: "9px 16px",
-                    borderRadius: 100,
-                    transform: `rotate(${pill.rotate}deg)`,
-                    "--pill-a": pill.borderA,
-                    "--pill-b": pill.borderB,
-                  } as React.CSSProperties}
-                >
-                  <span style={{ position: "relative", zIndex: 1 }}>{pill.label}</span>
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -131,7 +102,7 @@ export default function Home() {
               }}
             >
               <h2 style={{ margin: 0, fontSize: 30, fontWeight: 800, letterSpacing: "-0.02em" }}>
-                Stuff I made
+                Recent work
               </h2>
               <span
                 style={{
