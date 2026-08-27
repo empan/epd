@@ -46,8 +46,8 @@ export default function HeaderGlow({
       pos.current.x += vel.current.x;
       pos.current.y += vel.current.y;
 
-      el.style.transform = `translate3d(${pos.current.x - 240}px, ${
-        pos.current.y - 240
+      el.style.transform = `translate3d(${pos.current.x - 190}px, ${
+        pos.current.y - 190
       }px, 0)`;
     };
     raf = requestAnimationFrame(tick);
@@ -76,8 +76,8 @@ export default function HeaderGlow({
           position: "absolute",
           left: 0,
           top: 0,
-          width: 480,
-          height: 480,
+          width: 380,
+          height: 380,
           pointerEvents: "none",
           willChange: "transform",
           transition: "opacity 380ms ease",
