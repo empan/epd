@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const GLOW_GRADIENT =
-  "radial-gradient(circle, rgba(255,215,107,0.6) 0%, rgba(255,143,107,0.342) 42%, rgba(255,143,107,0) 70%)";
+  "radial-gradient(circle, rgba(255,215,107,0.32) 0%, rgba(255,143,107,0.16) 42%, rgba(255,143,107,0) 70%)";
 
 /**
  * Interactive header backdrop, ported from the Claude Design `DCLogic`
@@ -58,7 +58,7 @@ export default function HeaderGlow({
     if (reduced.current) return;
     const r = e.currentTarget.getBoundingClientRect();
     target.current = { x: e.clientX - r.left, y: e.clientY - r.top };
-    setOpacity(1);
+    setOpacity(0.6);
   };
 
   const onMouseLeave = () => setOpacity(0);
