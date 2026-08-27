@@ -1,6 +1,6 @@
-import HeaderGlow from "@/components/HeaderGlow";
-import { about, marqueeItems, nav, pills, site } from "@/data/site";
+import { about, marqueeItems, nav, site } from "@/data/site";
 import { projects } from "@/data/projects";
+import TypingTagline from "./TypingTagline";
 
 const mono = "var(--font-plex-mono), monospace";
 const PAD_X = "clamp(20px, 5vw, 80px)";
@@ -13,12 +13,12 @@ export default function Home() {
       <main
         style={{
           width: "100%",
-          background: "var(--color-teal)",
+          background: "#d2e9f4",
           overflow: "hidden",
           color: "var(--color-ink)",
         }}
       >
-        <HeaderGlow>
+        <div className="header-noise">
           {/* Header bar */}
           <div
             style={{
@@ -27,8 +27,8 @@ export default function Home() {
               alignItems: "center",
               gap: 12,
               flexWrap: "wrap",
-              padding: `20px ${PAD_X}`,
-              color: "#d8ece5",
+              padding: `20px ${PAD_X} 6px`,
+              color: "#054846",
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: "0.02em",
@@ -50,8 +50,8 @@ export default function Home() {
           </div>
 
           {/* Hero */}
-          <div style={{ padding: `34px ${PAD_X} 46px` }}>
-            <h1
+          <div style={{ padding: `14px ${PAD_X} 46px` }}>
+            <TypingTagline
               style={{
                 margin: 0,
                 fontSize: "clamp(2.25rem, 6vw, 68px)",
@@ -60,39 +60,11 @@ export default function Home() {
                 letterSpacing: "-0.035em",
                 maxWidth: 700,
                 textWrap: "pretty",
-                color: "#f4fbf8",
+                color: "#054846",
               }}
-            >
-              {site.tagline}
-            </h1>
-            <div
-              style={{
-                marginTop: 22,
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                flexWrap: "wrap",
-              }}
-            >
-              {pills.map((pill) => (
-                <span
-                  key={pill.label}
-                  style={{
-                    background: pill.bg,
-                    color: pill.fg,
-                    fontSize: 14,
-                    fontWeight: 600,
-                    padding: "9px 16px",
-                    borderRadius: 100,
-                    transform: `rotate(${pill.rotate}deg)`,
-                  }}
-                >
-                  {pill.label}
-                </span>
-              ))}
-            </div>
+            />
           </div>
-        </HeaderGlow>
+        </div>
 
         {/* Marquee */}
         <div style={{ padding: "14px 0", background: "var(--color-yellow)", overflow: "hidden" }}>
@@ -122,28 +94,19 @@ export default function Home() {
               style={{
                 display: "flex",
                 alignItems: "baseline",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 gap: 8,
                 flexWrap: "wrap",
                 marginBottom: 26,
               }}
             >
               <h2 style={{ margin: 0, fontSize: 30, fontWeight: 800, letterSpacing: "-0.02em" }}>
-                Stuff I made
+                Recent work
               </h2>
-              <span
-                style={{
-                  fontFamily: mono,
-                  fontSize: 11,
-                  color: "#857c6d",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                HOVER TO PEEK
-              </span>
+ 
             </div>
 
-            <div className="desk-work-grid">
+            <div className="desk-work-list">
               {projects.map((p) => (
                 <a
                   key={p.title}
@@ -159,14 +122,15 @@ export default function Home() {
                   }}
                 >
                   <div
+                    className="desk-card-media"
                     style={{
-                      height: 168,
                       backgroundColor: p.tint,
                       backgroundImage:
                         "repeating-linear-gradient(135deg, rgba(15,26,23,0.10) 0 7px, rgba(0,0,0,0) 7px 15px)",
                       display: "flex",
                       alignItems: "flex-end",
-                      padding: 12,
+                      justifyContent: "center",
+                      padding: 14,
                       borderBottom: "2.5px solid var(--color-ink)",
                     }}
                   >
@@ -186,9 +150,11 @@ export default function Home() {
                   </div>
                   <div
                     style={{
-                      padding: "16px 18px 20px",
+                      padding: "18px 20px 22px",
                       display: "flex",
                       flexDirection: "column",
+                      alignItems: "center",
+                      textAlign: "center",
                       gap: 7,
                     }}
                   >

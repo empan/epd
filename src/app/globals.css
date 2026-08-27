@@ -44,56 +44,26 @@ a {
   }
 }
 
-@keyframes blobwob {
-  0% {
-    border-radius: 62% 38% 44% 56% / 52% 46% 54% 48%;
-    transform: rotate(0deg) scale(1, 1);
-  }
-  25% {
-    border-radius: 40% 60% 58% 42% / 62% 38% 62% 38%;
-    transform: rotate(45deg) scale(1.06, 0.94);
-  }
-  50% {
-    border-radius: 55% 45% 36% 64% / 41% 63% 37% 59%;
-    transform: rotate(120deg) scale(0.95, 1.08);
-  }
-  75% {
-    border-radius: 46% 54% 62% 38% / 57% 44% 56% 43%;
-    transform: rotate(240deg) scale(1.04, 0.97);
-  }
-  100% {
-    border-radius: 62% 38% 44% 56% / 52% 46% 54% 48%;
-    transform: rotate(360deg) scale(1, 1);
-  }
-}
-
-@keyframes blobwob2 {
-  0% {
-    border-radius: 44% 56% 60% 40% / 58% 42% 58% 42%;
-    transform: rotate(0deg) scale(1.02, 0.98);
-  }
-  33% {
-    border-radius: 61% 39% 38% 62% / 40% 60% 40% 60%;
-    transform: rotate(-80deg) scale(0.96, 1.05);
-  }
-  66% {
-    border-radius: 38% 62% 55% 45% / 63% 37% 63% 37%;
-    transform: rotate(-200deg) scale(1.07, 0.93);
-  }
-  100% {
-    border-radius: 44% 56% 60% 40% / 58% 42% 58% 42%;
-    transform: rotate(-360deg) scale(1.02, 0.98);
-  }
-}
-
 .desk-marquee {
   animation: drift 26s linear infinite;
 }
 
-.desk-work-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+.desk-work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.desk-card-media {
+  aspect-ratio: 2 / 1;
+}
+
+@media (max-width: 640px) {
+  .desk-card-media {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .desk-about-grid {
@@ -104,7 +74,6 @@ a {
 }
 
 @media (max-width: 640px) {
-  .desk-work-grid,
   .desk-about-grid {
     grid-template-columns: 1fr;
   }
@@ -112,12 +81,12 @@ a {
 
 /* Nav pills in the header */
 .desk-navlink {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(5, 72, 70, 0.1);
   transition: background 160ms ease, color 160ms ease;
 }
 .desk-navlink:hover {
-  background: var(--color-yellow);
-  color: #1f2b26;
+  background: var(--color-teal);
+  color: var(--color-cream);
 }
 
 /* Project cards */
@@ -144,12 +113,87 @@ a {
   background: var(--color-orange);
 }
 
+/* Subtle grain over the blue header block */
+.header-noise {
+  position: relative;
+}
+.header-noise > * {
+  position: relative;
+  z-index: 1;
+}
+.header-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+}
+
+/* Custom cursor — a chunky hard-outlined arrow with an offset ink shadow */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* Outer node: only ever translated (via JS transform), never scaled/rotated,
+   so the position transform can't compound with the hover transform. */
+.cursor-arrow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* tip of the SVG path sits at ~(4, 2.5) in a 24u box scaled to 30px */
+  margin: -3px 0 0 -5px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  will-change: transform;
+}
+.cursor-arrow.is-visible {
+  opacity: 1;
+}
+
+/* Inner node: owns the look and every hover/press transform. */
+.cursor-arrow-shape {
+  display: block;
+  --fill: var(--color-cream);
+  filter: drop-shadow(2px 2px 0 var(--color-ink));
+  transform-origin: 6px 6px;
+  transition: scale 120ms ease, rotate 160ms ease, filter 160ms ease;
+}
+.cursor-arrow-shape svg {
+  display: block;
+}
+
+/* Over anything clickable: swell, tilt, go yellow, drop a bolder shadow */
+.cursor-arrow.is-hover .cursor-arrow-shape {
+  --fill: var(--color-yellow);
+  scale: 1.28;
+  rotate: -8deg;
+  filter: drop-shadow(3.5px 3.5px 0 var(--color-ink));
+}
+
+.cursor-arrow.is-down .cursor-arrow-shape {
+  scale: 0.86;
+}
+.cursor-arrow.is-hover.is-down .cursor-arrow-shape {
+  scale: 1.08;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .desk-marquee,
-  .desk-blob {
+  .desk-marquee {
     animation: none !important;
+  }
+  .cursor-arrow {
+    display: none !important;
   }
 }

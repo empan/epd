@@ -1,10 +1,11 @@
 export const site = {
   name: "Emily Pan",
   role: "Design Manager",
-  headerLabel: "EMILY PAN — DESIGN MANAGER",
-  tagline: "Hi! I'm Emily. I manage designers and I still open Figma every day.",
+  headerLabel: "",
+  // Hero copy now lives in TypingTagline.tsx (animated). Kept for reference.
+  tagline: "Hi, I'm Emily! I lead design teams through ambiguity.",
   description:
-    "Emily Pan — design manager working on payments at Ledgerline. Design systems, hiring, onboarding, zero states.",
+    "Emily Pan",
   url: "https://empan.github.io/epd",
   email: "epan920@gmail.com",
   linkedin: "https://www.linkedin.com/in/",
@@ -17,22 +18,15 @@ export const nav = [
   { href: "#contact", label: "say hi" },
 ];
 
-// Rotated chips under the hero headline.
-export const pills = [
-  { label: "payments @ Ledgerline", bg: "#ffd76b", fg: "#23301c", rotate: -2 },
-  { label: "6 designers", bg: "#f4fbf8", fg: "#1f2b26", rotate: 1.5 },
-  { label: "SF, mostly", bg: "#ff8f6b", fg: "#2b1a14", rotate: -1 },
-];
-
 export const marqueeItems = [
-  "design systems",
-  "payments",
-  "hiring",
+  "upleveling",
+  "mentoring",
+  "synonym finding",
   "onboarding",
-  "zero states",
+  "hiring",
 ];
 
 export const about = {
-  heading: "Also true about me",
-  body: "I keep a spreadsheet of every critique I've run. I make bad ceramics on Sundays. I will read your PRD twice and then ask about the empty state.",
+  heading: "About me",
+  body: "I'm based in the Hudson Valley, NY. I'm a big fan of ceramics, baking, and nature walks.",
 };
