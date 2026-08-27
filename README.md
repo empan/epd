@@ -1,8 +1,7 @@
-# Portfolio
+# epd
 
-Personal portfolio site built with [Next.js](https://nextjs.org) (App Router,
-static export) and [Tailwind CSS](https://tailwindcss.com), deployed to GitHub
-Pages via GitHub Actions.
+Static site built with [Next.js](https://nextjs.org) (App Router, static export)
+and [Tailwind CSS](https://tailwindcss.com). Deploys to GitHub Pages via Actions.
 
 ## Develop
 
@@ -11,7 +10,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+http://localhost:3000
 
 ## Build
 
@@ -19,44 +18,31 @@ Open http://localhost:3000.
 npm run build
 ```
 
-Outputs a static site to `out/`.
+Static output lands in `out/`.
 
 ## Structure
 
 ```
 src/
-  app/            Routes (App Router)
-    page.tsx      Home
-    about/        About page
-    projects/     Projects list
-    contact/      Contact page
-  components/      Reusable UI (Header, Footer, ProjectCard)
+  app/            Routes (App Router): page.tsx, about/, projects/, contact/
+  components/      Header, Footer, ProjectCard
   data/
     site.ts       Name, nav, socials, metadata
-    projects.ts   Project entries — edit this to add work
+    projects.ts   Project entries
 ```
 
 ## Editing content
 
-- **Bio, name, links:** `src/data/site.ts`
-- **Projects:** `src/data/projects.ts`
-- **About / experience:** `src/app/about/page.tsx`
-- **Colors / fonts:** `src/app/globals.css` (`@theme` block)
+- Name / links / metadata: `src/data/site.ts`
+- Projects: `src/data/projects.ts`
+- Experience: `src/app/about/page.tsx`
+- Colors / fonts: `@theme` block in `src/app/globals.css`
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
-publishes to GitHub Pages.
+Push to `main` runs `.github/workflows/deploy.yml`.
 
-One-time setup: in the repo, go to **Settings → Pages → Build and deployment**
-and set **Source** to **GitHub Actions**.
+One-time: repo **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 
-### Project site vs. user site
-
-This repo is set up as a **project site**, served at
-`https://<user>.github.io/<repo>/`. The workflow injects the correct base path
-automatically.
-
-To use a **user site** (`https://<user>.github.io/`), rename the repo to
-`<user>.github.io`. No config change needed — the workflow detects the base path
-from Pages.
+Served at `https://<user>.github.io/epd/`. Rename the repo to `<user>.github.io`
+for a root-domain user site — the workflow adjusts the base path automatically.

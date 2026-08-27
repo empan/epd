@@ -1,11 +1,9 @@
 export const site = {
   name: "Emily Pan",
   role: "Software Engineer",
-  // Used for <title>, meta description, and Open Graph tags.
   description:
     "Portfolio of Emily Pan — software engineer building thoughtful, well-crafted web experiences.",
-  // Set this to your final deployed URL once known.
-  url: "https://empan.github.io/portfolio",
+  url: "https://empan.github.io/epd",
   email: "epan920@gmail.com",
   location: "United States",
 };
