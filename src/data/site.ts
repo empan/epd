@@ -1,8 +1,8 @@
 export const site = {
   name: "Emily Pan",
   role: "Design Manager",
-  headerLabel: "EMILY PAN — DESIGN MANAGER",
-  tagline: "Hi! I'm Emily. I manage designers and I still open Figma every day.",
+  headerLabel: "",
+  tagline: "Hi, I'm Emily! I lead product design teams.",
   description:
     "Emily Pan — design manager working on payments at Ledgerline. Design systems, hiring, onboarding, zero states.",
   url: "https://empan.github.io/epd",
@@ -19,9 +19,9 @@ export const nav = [
 
 // Rotated chips under the hero headline.
 export const pills = [
-  { label: "payments @ Ledgerline", bg: "#ffd76b", fg: "#23301c", rotate: -2 },
-  { label: "6 designers", bg: "#f4fbf8", fg: "#1f2b26", rotate: 1.5 },
-  { label: "SF, mostly", bg: "#ff8f6b", fg: "#2b1a14", rotate: -1 },
+  { label: "Graphs, alerts & more @ Datadog", bg: "#ffd76b", fg: "#23301c", rotate: -2 },
+  { label: "Small & large teams", bg: "#f4fbf8", fg: "#1f2b26", rotate: 1.5 },
+  { label: "\"Upstate\" New York", bg: "#ff8f6b", fg: "#2b1a14", rotate: -1 },
 ];
 
 export const marqueeItems = [

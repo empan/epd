@@ -13,7 +13,7 @@ export default function Home() {
       <main
         style={{
           width: "100%",
-          background: "var(--color-teal)",
+          background: "#d2e9f4",
           overflow: "hidden",
           color: "var(--color-ink)",
         }}
@@ -28,7 +28,7 @@ export default function Home() {
               gap: 12,
               flexWrap: "wrap",
               padding: `20px ${PAD_X}`,
-              color: "#d8ece5",
+              color: "#054846",
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: "0.02em",
@@ -60,7 +60,7 @@ export default function Home() {
                 letterSpacing: "-0.035em",
                 maxWidth: 700,
                 textWrap: "pretty",
-                color: "#f4fbf8",
+                color: "#054846",
               }}
             >
               {site.tagline}
