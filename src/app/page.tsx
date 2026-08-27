@@ -27,7 +27,7 @@ export default function Home() {
               alignItems: "center",
               gap: 12,
               flexWrap: "wrap",
-              padding: `20px ${PAD_X}`,
+              padding: `20px ${PAD_X} 6px`,
               color: "#054846",
               fontSize: 13,
               fontWeight: 600,
@@ -50,7 +50,7 @@ export default function Home() {
           </div>
 
           {/* Hero */}
-          <div style={{ padding: `34px ${PAD_X} 46px` }}>
+          <div style={{ padding: `14px ${PAD_X} 46px` }}>
             <TypingTagline
               style={{
                 margin: 0,
@@ -94,7 +94,7 @@ export default function Home() {
               style={{
                 display: "flex",
                 alignItems: "baseline",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 gap: 8,
                 flexWrap: "wrap",
                 marginBottom: 26,
@@ -106,7 +106,7 @@ export default function Home() {
  
             </div>
 
-            <div className="desk-work-grid">
+            <div className="desk-work-list">
               {projects.map((p) => (
                 <a
                   key={p.title}
@@ -122,14 +122,15 @@ export default function Home() {
                   }}
                 >
                   <div
+                    className="desk-card-media"
                     style={{
-                      height: 168,
                       backgroundColor: p.tint,
                       backgroundImage:
                         "repeating-linear-gradient(135deg, rgba(15,26,23,0.10) 0 7px, rgba(0,0,0,0) 7px 15px)",
                       display: "flex",
                       alignItems: "flex-end",
-                      padding: 12,
+                      justifyContent: "center",
+                      padding: 14,
                       borderBottom: "2.5px solid var(--color-ink)",
                     }}
                   >
@@ -149,9 +150,11 @@ export default function Home() {
                   </div>
                   <div
                     style={{
-                      padding: "16px 18px 20px",
+                      padding: "18px 20px 22px",
                       display: "flex",
                       flexDirection: "column",
+                      alignItems: "center",
+                      textAlign: "center",
                       gap: 7,
                     }}
                   >

@@ -23,17 +23,10 @@ export const projects: Project[] = [
     tint: "#ffe3a8",
   },
   {
-    title: "Disputes, untangled",
+    title: "Mobilizing across teams",
     blurb: "Fintech's least fun flow, made merely unpleasant.",
     meta: "LEDGERLINE · 2022",
     slot: "FLOW DIAGRAM",
     tint: "#ffc9b5",
-  },
-  {
-    title: "Critique spreadsheet",
-    blurb: "Every crit I've run since 2021, and what changed after.",
-    meta: "SIDE THING",
-    slot: "SCREENSHOT",
-    tint: "#d9d5ea",
   },
 ];

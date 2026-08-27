@@ -48,10 +48,22 @@ a {
   animation: drift 26s linear infinite;
 }
 
-.desk-work-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+.desk-work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.desk-card-media {
+  aspect-ratio: 2 / 1;
+}
+
+@media (max-width: 640px) {
+  .desk-card-media {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .desk-about-grid {
@@ -62,7 +74,6 @@ a {
 }
 
 @media (max-width: 640px) {
-  .desk-work-grid,
   .desk-about-grid {
     grid-template-columns: 1fr;
   }
