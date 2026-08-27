@@ -18,7 +18,7 @@ export default function Home() {
           color: "var(--color-ink)",
         }}
       >
-        <div>
+        <div className="header-noise">
           {/* Header bar */}
           <div
             style={{
