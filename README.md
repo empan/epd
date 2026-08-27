@@ -22,21 +22,27 @@ Static output lands in `out/`.
 
 ## Structure
 
+Single-page site ("The Desk").
+
 ```
 src/
-  app/            Routes (App Router): page.tsx, about/, projects/, contact/
-  components/      Header, Footer, ProjectCard
+  app/
+    page.tsx        The whole page (header, hero, marquee, work, about)
+    layout.tsx      Fonts + metadata
+    globals.css     Palette tokens, keyframes, hover classes
+  components/
+    HeaderGlow.tsx  Cursor-following header glow (client component)
   data/
-    site.ts       Name, nav, socials, metadata
-    projects.ts   Project entries
+    site.ts         Name, role, tagline, nav, pills, marquee, bio, links
+    projects.ts     Project cards (title, blurb, meta, slot, tint)
 ```
 
 ## Editing content
 
-- Name / links / metadata: `src/data/site.ts`
-- Projects: `src/data/projects.ts`
-- Experience: `src/app/about/page.tsx`
-- Colors / fonts: `@theme` block in `src/app/globals.css`
+- Headline, role, pills, bio, links: `src/data/site.ts`
+- Project cards: `src/data/projects.ts`
+- Colors / fonts / animation: `src/app/globals.css` + `src/app/layout.tsx`
+- Résumé button expects `public/resume.pdf` (not committed yet)
 
 ## Deployment
 
