@@ -2,13 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const GLOW_GRADIENT =
-  "radial-gradient(circle, rgba(255,215,107,0.32) 0%, rgba(255,143,107,0.16) 42%, rgba(255,143,107,0) 70%)";
+const CELL = 34; // grid cell size in px
+const REVEAL = 150; // radius of the reveal circle around the cursor
+
+const GRID_LINE = "rgba(5,72,70,0.5)";
+const GRID_IMAGE = `linear-gradient(${GRID_LINE} 1px, transparent 1px), linear-gradient(90deg, ${GRID_LINE} 1px, transparent 1px)`;
+const REVEAL_MASK = `radial-gradient(${REVEAL}px circle at var(--gx) var(--gy), #000 0%, rgba(0,0,0,0.4) 55%, transparent 78%)`;
 
 /**
- * Interactive header backdrop, ported from the Claude Design `DCLogic`
- * component. A blurred blob layer springs toward the cursor while the pointer
- * is over the header, then fades out. Decorative — disabled under
+ * Interactive header backdrop. A faint teal grid is revealed in a soft
+ * circle that springs toward the cursor while the pointer is over the
+ * header, then fades out. Decorative — disabled under
  * `prefers-reduced-motion`.
  */
 export default function HeaderGlow({
@@ -16,7 +20,7 @@ export default function HeaderGlow({
 }: {
   children: React.ReactNode;
 }) {
-  const glowRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const [opacity, setOpacity] = useState(0);
 
   const pos = useRef<{ x: number; y: number } | null>(null);
@@ -33,12 +37,12 @@ export default function HeaderGlow({
     let raf = 0;
     const tick = () => {
       raf = requestAnimationFrame(tick);
-      const el = glowRef.current;
+      const el = gridRef.current;
       if (!el || !target.current) return;
       if (!pos.current) pos.current = { ...target.current };
 
-      const k = 0.022;
-      const damping = 0.86;
+      const k = 0.05;
+      const damping = 0.8;
       vel.current.x =
         (vel.current.x + (target.current.x - pos.current.x) * k) * damping;
       vel.current.y =
@@ -46,9 +50,8 @@ export default function HeaderGlow({
       pos.current.x += vel.current.x;
       pos.current.y += vel.current.y;
 
-      el.style.transform = `translate3d(${pos.current.x - 190}px, ${
-        pos.current.y - 190
-      }px, 0)`;
+      el.style.setProperty("--gx", `${pos.current.x}px`);
+      el.style.setProperty("--gy", `${pos.current.y}px`);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
@@ -58,7 +61,7 @@ export default function HeaderGlow({
     if (reduced.current) return;
     const r = e.currentTarget.getBoundingClientRect();
     target.current = { x: e.clientX - r.left, y: e.clientY - r.top };
-    setOpacity(0.6);
+    setOpacity(1);
   };
 
   const onMouseLeave = () => setOpacity(0);
@@ -70,60 +73,20 @@ export default function HeaderGlow({
       onMouseLeave={onMouseLeave}
     >
       <div
-        ref={glowRef}
+        ref={gridRef}
         aria-hidden
         style={{
           position: "absolute",
-          left: 0,
-          top: 0,
-          width: 380,
-          height: 380,
+          inset: 0,
           pointerEvents: "none",
-          willChange: "transform",
-          transition: "opacity 380ms ease",
+          backgroundImage: GRID_IMAGE,
+          backgroundSize: `${CELL}px ${CELL}px`,
+          maskImage: REVEAL_MASK,
+          WebkitMaskImage: REVEAL_MASK,
+          transition: "opacity 320ms ease",
           opacity,
         }}
-      >
-        <div
-          className="desk-blob"
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "62% 38% 44% 56% / 52% 46% 54% 48%",
-            animation: "blobwob 14s ease-in-out infinite",
-            filter: "blur(14px)",
-            backgroundImage: GLOW_GRADIENT,
-          }}
-        />
-        <div
-          className="desk-blob"
-          style={{
-            position: "absolute",
-            inset: "6%",
-            borderRadius: "44% 56% 60% 40% / 58% 42% 58% 42%",
-            animation: "blobwob2 9s ease-in-out infinite",
-            filter: "blur(18px)",
-            opacity: 0.75,
-            backgroundImage: GLOW_GRADIENT,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "50%",
-            mixBlendMode: "overlay",
-            opacity: 0.55,
-            backgroundImage:
-              "url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22220%22 height=%22220%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')",
-            backgroundSize: "220px 220px",
-            maskImage:
-              "radial-gradient(circle, #000 0%, rgba(0,0,0,0.55) 40%, transparent 66%)",
-            WebkitMaskImage:
-              "radial-gradient(circle, #000 0%, rgba(0,0,0,0.55) 40%, transparent 66%)",
-          }}
-        />
-      </div>
+      />
       <div style={{ position: "relative" }}>{children}</div>
     </div>
   );
