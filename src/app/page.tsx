@@ -3,26 +3,17 @@ import { about, marqueeItems, nav, pills, site } from "@/data/site";
 import { projects } from "@/data/projects";
 
 const mono = "var(--font-plex-mono), monospace";
-const PAD_X = "clamp(20px, 4vw, 44px)";
+const PAD_X = "clamp(20px, 5vw, 80px)";
 
 const marqueeText = `${marqueeItems.join(" ✦ ")} ✦ `.repeat(2);
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        padding: "clamp(16px, 4vw, 64px)",
-      }}
-    >
+    <div style={{ minHeight: "100vh" }}>
       <main
         style={{
           width: "100%",
-          maxWidth: 960,
           background: "var(--color-teal)",
-          borderRadius: 6,
           overflow: "hidden",
           color: "var(--color-ink)",
         }}
