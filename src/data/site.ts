@@ -17,19 +17,41 @@ export const nav = [
   { href: "#contact", label: "say hi" },
 ];
 
-// Rotated chips under the hero headline.
+// Rotated chips under the hero headline. `borderA`/`borderB` are the two
+// stops of the animated gradient rim on hover, tuned to each pill's own bg.
 export const pills = [
-  { label: "Making complex things simple @ Datadog", bg: "#ffd76b", fg: "#23301c", rotate: -2 },
-  { label: "Small & large teams", bg: "#f4fbf8", fg: "#1f2b26", rotate: 1.5 },
-  { label: "\"Upstate\" New York", bg: "#ff8f6b", fg: "#2b1a14", rotate: -1 },
+  {
+    label: "Making complex things simple @ Datadog",
+    bg: "#ffd76b",
+    fg: "#23301c",
+    borderA: "#e0a72c",
+    borderB: "#fff0c2",
+    rotate: -2,
+  },
+  {
+    label: "Small & large teams",
+    bg: "#f4fbf8",
+    fg: "#1f2b26",
+    borderA: "#1f6f5c",
+    borderB: "#bfe3da",
+    rotate: 1.5,
+  },
+  {
+    label: "\"Upstate\" New York",
+    bg: "#ff8f6b",
+    fg: "#2b1a14",
+    borderA: "#e0603c",
+    borderB: "#ffcbb6",
+    rotate: -1,
+  },
 ];
 
 export const marqueeItems = [
-  "dataviz",
-  "payments",
-  "hiring",
+  "upleveling",
+  "mentoring",
+  "synonym finding",
   "onboarding",
-  "zero states",
+  "hiring",
 ];
 
 export const about = {

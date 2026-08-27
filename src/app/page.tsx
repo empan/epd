@@ -85,7 +85,9 @@ export default function Home() {
                     padding: "9px 16px",
                     borderRadius: 100,
                     transform: `rotate(${pill.rotate}deg)`,
-                  }}
+                    "--pill-a": pill.borderA,
+                    "--pill-b": pill.borderB,
+                  } as React.CSSProperties}
                 >
                   <span style={{ position: "relative", zIndex: 1 }}>{pill.label}</span>
                 </span>

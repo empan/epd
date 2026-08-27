@@ -96,11 +96,11 @@ a {
   border-radius: inherit;
   background: conic-gradient(
     from var(--pill-angle),
-    var(--color-teal),
-    var(--color-orange),
-    var(--color-yellow),
-    var(--color-teal),
-    var(--color-teal)
+    var(--pill-a),
+    var(--pill-b),
+    var(--pill-a),
+    var(--pill-b),
+    var(--pill-a)
   );
   opacity: 0;
   transition: opacity 200ms ease;
@@ -149,6 +149,52 @@ a {
   background: var(--color-orange);
 }
 
+/* Custom cursor — a chunky hard-outlined arrow with an offset ink shadow */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+.cursor-arrow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* tip of the SVG path sits at ~(4, 2.5) in a 24u box scaled to 30px */
+  margin: -3px 0 0 -5px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  --fill: var(--color-cream);
+  filter: drop-shadow(2px 2px 0 var(--color-ink));
+  transition: opacity 160ms ease, scale 120ms ease, rotate 160ms ease,
+    filter 160ms ease;
+  will-change: transform;
+}
+.cursor-arrow svg {
+  display: block;
+}
+
+.cursor-arrow.is-visible {
+  opacity: 1;
+}
+
+/* Over anything clickable: swell, tilt, go yellow, drop a bolder shadow */
+.cursor-arrow.is-hover {
+  --fill: var(--color-yellow);
+  scale: 1.28;
+  rotate: -8deg;
+  filter: drop-shadow(3.5px 3.5px 0 var(--color-ink));
+}
+
+.cursor-arrow.is-down {
+  scale: 0.86;
+}
+.cursor-arrow.is-hover.is-down {
+  scale: 1.08;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -156,5 +202,8 @@ a {
   .desk-marquee,
   .desk-pill:hover::before {
     animation: none !important;
+  }
+  .cursor-arrow {
+    display: none !important;
   }
 }
