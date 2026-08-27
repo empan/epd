@@ -16,7 +16,7 @@ export const projects: Project[] = [
     tint: "#c9e3d8",
   },
   {
-    title: "The system that stuck",
+    title: "Redesigning core components",
     blurb: "A design system six people actually reach for.",
     meta: "LEDGERLINE · 2023",
     slot: "COMPONENT GRID",

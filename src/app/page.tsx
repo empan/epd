@@ -1,5 +1,6 @@
 import { about, marqueeItems, nav, site } from "@/data/site";
 import { projects } from "@/data/projects";
+import TypingTagline from "./TypingTagline";
 
 const mono = "var(--font-plex-mono), monospace";
 const PAD_X = "clamp(20px, 5vw, 80px)";
@@ -50,7 +51,7 @@ export default function Home() {
 
           {/* Hero */}
           <div style={{ padding: `34px ${PAD_X} 46px` }}>
-            <h1
+            <TypingTagline
               style={{
                 margin: 0,
                 fontSize: "clamp(2.25rem, 6vw, 68px)",
@@ -61,9 +62,7 @@ export default function Home() {
                 textWrap: "pretty",
                 color: "#054846",
               }}
-            >
-              {site.tagline}
-            </h1>
+            />
           </div>
         </div>
 
@@ -104,16 +103,7 @@ export default function Home() {
               <h2 style={{ margin: 0, fontSize: 30, fontWeight: 800, letterSpacing: "-0.02em" }}>
                 Recent work
               </h2>
-              <span
-                style={{
-                  fontFamily: mono,
-                  fontSize: 11,
-                  color: "#857c6d",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                HOVER TO PEEK
-              </span>
+ 
             </div>
 
             <div className="desk-work-grid">

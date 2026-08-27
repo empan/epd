@@ -2,7 +2,8 @@ export const site = {
   name: "Emily Pan",
   role: "Design Manager",
   headerLabel: "",
-  tagline: "Hi, I'm Emily! I lead product design teams through ambiguity.",
+  // Hero copy now lives in TypingTagline.tsx (animated). Kept for reference.
+  tagline: "Hi, I'm Emily! I lead design teams through ambiguity.",
   description:
     "Emily Pan",
   url: "https://empan.github.io/epd",
