@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
 
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} — ${site.role}`,
-    template: `%s — ${site.name}`,
-  },
+  title: `${site.name} — ${site.role}`,
   description: site.description,
   openGraph: {
     title: `${site.name} — ${site.role}`,
@@ -26,14 +36,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
-        <Header />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-          {children}
-        </main>
-        <Footer />
-      </body>
+    <html lang="en" className={`${bricolage.variable} ${plexMono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

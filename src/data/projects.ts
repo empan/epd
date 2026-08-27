@@ -1,39 +1,39 @@
 export type Project = {
-  slug: string;
   title: string;
-  summary: string;
-  tags: string[];
+  blurb: string;
+  meta: string;
+  slot: string;
+  tint: string;
   href?: string;
-  repo?: string;
-  year: number;
 };
 
 export const projects: Project[] = [
   {
-    slug: "placeholder-one",
-    title: "Project One",
-    summary:
-      "A short description of what this project is, the problem it solves, and your role in building it.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    href: "https://example.com",
-    repo: "https://github.com/empan/project-one",
-    year: 2026,
+    title: "Checkout, rebuilt",
+    blurb: "Two years, one replatform, four decisions that mattered.",
+    meta: "LEDGERLINE · 2024–26",
+    slot: "HERO SHOT",
+    tint: "#c9e3d8",
   },
   {
-    slug: "placeholder-two",
-    title: "Project Two",
-    summary:
-      "Another placeholder project. Replace with real work — screenshots, links, and outcomes go a long way.",
-    tags: ["React", "Node.js"],
-    repo: "https://github.com/empan/project-two",
-    year: 2025,
+    title: "The system that stuck",
+    blurb: "A design system six people actually reach for.",
+    meta: "LEDGERLINE · 2023",
+    slot: "COMPONENT GRID",
+    tint: "#ffe3a8",
   },
   {
-    slug: "placeholder-three",
-    title: "Project Three",
-    summary:
-      "Describe the impact: performance gains, users served, or what you learned.",
-    tags: ["Python", "Data"],
-    year: 2025,
+    title: "Disputes, untangled",
+    blurb: "Fintech's least fun flow, made merely unpleasant.",
+    meta: "LEDGERLINE · 2022",
+    slot: "FLOW DIAGRAM",
+    tint: "#ffc9b5",
+  },
+  {
+    title: "Critique spreadsheet",
+    blurb: "Every crit I've run since 2021, and what changed after.",
+    meta: "SIDE THING",
+    slot: "SCREENSHOT",
+    tint: "#d9d5ea",
   },
 ];
